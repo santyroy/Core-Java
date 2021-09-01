@@ -145,5 +145,16 @@ Call by reference ->	here the actual pointer to the variables memory location is
  Always a copy of the primitive value or copy of the reference is passed.
  Now a copy of reference would still point to the original object and any change in property for the copied reference
  would also point the original object.
+ 
+ 
+ 
+ Enum:
+ ================================================
+ 
+ - It is a special datatype which enables a variable to be a set of predefined constants.
+ - Enums can be compared using == operators beacuse each enum variable has its own ordinal value.
+ 
+ 
+ 
 
 
