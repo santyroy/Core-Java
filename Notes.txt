@@ -203,3 +203,21 @@ Interfaces:
 	
 TYPE - summarizes the common features of a set of objects with the same characteristics.
 
+
+
+Polymorphism:
+========================================================
+- Many forms - many behaviours
+- @override annotation helps compiler and user to tell that the parent class method has been changed in child class.
+
+
+
+Final Keyword:
+========================================================
+- If class has final keyword it cannot be extended
+- If method has final keyword it cannot be overrided
+- If variable has final keyword it becomes constant and cannot be changed after declaration.
+- Final datatype either should be instantiated immediately or inside constructor or inside initialization block.
+
+
+

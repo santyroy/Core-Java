@@ -1,6 +1,6 @@
 package com.roy._14oop.inheritance;
 
-public class Phone extends Product {
+public class Phone extends Product1 {
 
     // Default constructor
     public Phone() {
@@ -13,7 +13,7 @@ public class Phone extends Product {
     }
 
     @Override
-    public Product[] listVariants() {
+    public Product1[] listVariants() {
         throw new UnsupportedOperationException();
     }
 
