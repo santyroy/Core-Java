@@ -193,5 +193,9 @@ public class FormatterDemo {
         formatter = new Formatter();
         formatter.format("%010d", 88);
         System.out.println("value in 10 digits: " + formatter);
+
+        formatter = new Formatter();
+        formatter.format("%02d", 2);
+        System.out.println("value in 2 digits: " + formatter);
     }
 }

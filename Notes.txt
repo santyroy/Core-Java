@@ -51,15 +51,15 @@ Comments:
 Datatype:
 ===========================
 - Primitive (stores actual value)
-	- TYPE, 	SIZE,		    MIN VALUE,		MAX VALUE,		WRAPPER
-	- byte, 	1 byte,	        -128,			127,			Byte
-	- short,	2 bytes,	    -2^15			2^15 - 1		Short
-	- int, 	    4 bytes,	    -2^31			2^31 - 1		Integer
-	- long, 	8 bytes,	    -2^63			2^63 - 1		Long
-	- float	    4 bytes,	    -34E+38F		+34E+38F		Float
-	- double	8 bytes,	    -17E+308		+17E+308		Double
-	- boolean	VM dependent	false		    true			Boolean
-	- char		2 bytes	        0			    65,535			Character
+	- TYPE, 	SIZE,		MIN VALUE,	MAX VALUE,		WRAPPER
+	- byte, 	1 byte,	-128,		127,			Byte
+	- short,	2 bytes,	-2^15		2^15 - 1		Short
+	- int, 	4 bytes,	-2^31		2^31 - 1		Integer
+	- long, 	8 bytes,	-2^63		2^63 - 1		Long
+	- float	4 bytes,	-34E+38F	+34E+38F		Float
+	- double	8 bytes,	-17E+308	+17E+308		Double
+	- boolean	VM dependent	false		true			Boolean
+	- char		2 bytes	0		65,535			Character
 	
 - Reference (stores addresses/memory location of the actual object they refer to)
 	- Classes
@@ -78,9 +78,9 @@ Datatype:
 Number System:
 =============================
 
-- Binary 	    - radix=2 	(0,1)
-- Decimal	    - base=10 	(0,1,2,3,4,5,6,7,8,9)
-- Octal  	    - base=8	(0,1,2,3,4,5,6,7)
+- Binary 	- radix=2 	(0,1)
+- Decimal	- base=10 	(0,1,2,3,4,5,6,7,8,9)
+- Octal  	- base=8	(0,1,2,3,4,5,6,7)
 - Hexadecimal	- base=16	(0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F)
 
 
@@ -104,13 +104,13 @@ Operators:
 Random Number:
 ===============================
 - Using Math class
-	- (Mathrandom()) 			            // between 00 and 10
-	- ((int) (Mathrandom() * 100)) 	        // between 0 and 100
-	- ((int) (Mathrandom() * 100) + 100)    // between 100 and 200
+	- (Mathrandom()) 			// between 00 and 10
+	- ((int) (Mathrandom() * 100)) 	// between 0 and 100
+	- ((int) (Mathrandom() * 100) + 100)	// between 100 and 200
 	
 	
 - Using Random class
-	- (r.nextInt()); 			    // any random int
+	- (r.nextInt()); 			// any random int
 	- (r.nextInt(100)); 			// any int from 0 to 99
 	- (r.nextInt(100) + 1); 		// any int from 1 to 100
 
@@ -185,6 +185,21 @@ OOP - Object Oriented Programming
     Abstraction
         - Its main goal is to handle complexity by hiding unnecessary details from the user. 
         - That enables the user to implement more complex logic on top of the provided abstraction without understanding about all the hidden complexity
- 
-
+        
+       
+Interfaces:
+=======================================================
+	- Can have abstract, default and static methods of any number.
+	- Interfaces which have only one abstract method is known as Functional Interface. eg: Runnable, Callable
+	- We need not provide modifers "public abstract" before an abstract method, compiler automatically denotes it.
+	- Interfaces can have CONSTANTS with modifier "public static final" which need not be specified explicitly.
+	- Classes can implement multiple interfaces, but there will be compilation error if both interfaces have same default method.
+	
+	Abstract Class							Interfaces
+	-------------------------------------------------------------------------------------------------------
+	- "extends" keyword						- "implements" keyword
+	- can have field with all possible modifiers			- all fields are constants
+	- can't be extended simultaneously with other classes	- can be implemented together with other interfaces
+	
+TYPE - summarizes the common features of a set of objects with the same characteristics.
 
