@@ -178,6 +178,8 @@ OOP - Object Oriented Programming
             - default = access with in same package
             - protected = access with in same package and outside of package within child/extended classes
             - public = access from anywhere
+        - Access modifier when overridden cannot be demoted i.e a public method when overridden cannot be demoted to protected or default or private.
+        - We can use the same/higher level of access modifier when overriding
 
     Polymorphism
         - Overriding the current behavior in child classess
@@ -195,9 +197,9 @@ Interfaces:
 	- Interfaces can have CONSTANTS with modifier "public static final" which need not be specified explicitly.
 	- Classes can implement multiple interfaces, but there will be compilation error if both interfaces have same default method.
 	
-	Abstract Class							Interfaces
+	Abstract Class							                Interfaces
 	-------------------------------------------------------------------------------------------------------
-	- "extends" keyword						- "implements" keyword
+	- "extends" keyword						                - "implements" keyword
 	- can have field with all possible modifiers			- all fields are constants
 	- can't be extended simultaneously with other classes	- can be implemented together with other interfaces
 	
@@ -221,3 +223,31 @@ Final Keyword:
 
 
 
+Object Class:
+========================================================
+- Object class is found in java.lang package. java.lang package is imported by default in all classes.
+- JNI = Java Native Interface is a foreign function interface programming framework that enables java code running in JVM to call and be called by native application and libraries written in order languages such as C/C++. You can see native keyword with the methods that are written in C/C++.
+- The native keyword is applied to a method to indicate that the method is implemented in native code using JNI (Java Native Interface). native is a modifier applicable only for methods and we can’t apply it anywhere else. The methods which are implemented in C, C++ are called as native methods or foreign methods.
+    eg: public final native Class<?> getClass();
+        public final native void notify();
+        public final native void notifyAll();
+
+    The main objectives of native keyword are:
+
+        - To improve performance of the system.
+        - To achieve machine level/memory level communication.
+        - To use already existing legacy non-java code.
+
+Methods in Object Class
+-------------------------------
+- public getClass() = return the 'Class' of the object
+- public hashCode() = return the 'integer' hash value of the object which is used in HashMap and HashSet
+- public equals() = return the 'boolean' true/false of two objects references.
+- protected clone() = return a new copy of the existing 'object'. Two type of cloning shallow cloing / Deep cloning
+    - shallow cloning (by-default) = All references are copied, doesn't create a problem if we clone fields of primitive type but is a problem when cloning reference types because only references are cloned but the true object behind those references are not cloned.
+    - deep cloning = To clone all field of the object we need to override clone method and implement deep cloning.
+- public toString() = return 'String' representation of an object.
+- public final native void notify() - these are used to monitor objects in multi threading 
+- public final native void notify() - these are used to monitor objects in multi threading
+- public final native void wait(long var1) - these are used to monitor objects in multi threading
+- protected void finalize() - used to destruct object from Heap memory by the JVM (before JDK 9). Since JDK 9+ we have automated this using garbage collector tool.
