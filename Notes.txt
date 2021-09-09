@@ -51,15 +51,15 @@ Comments:
 Datatype:
 ===========================
 - Primitive (stores actual value)
-	- TYPE, 	SIZE,		MIN VALUE,	MAX VALUE,		WRAPPER
-	- byte, 	1 byte,	-128,		127,			Byte
-	- short,	2 bytes,	-2^15		2^15 - 1		Short
-	- int, 	4 bytes,	-2^31		2^31 - 1		Integer
-	- long, 	8 bytes,	-2^63		2^63 - 1		Long
-	- float	4 bytes,	-34E+38F	+34E+38F		Float
-	- double	8 bytes,	-17E+308	+17E+308		Double
-	- boolean	VM dependent	false		true			Boolean
-	- char		2 bytes	0		65,535			Character
+	- TYPE, 	SIZE,		    MIN VALUE,	MAX VALUE,		WRAPPER
+	- byte, 	1 byte,	        -128,		127,			Byte
+	- short,	2 bytes,	    -2^15		2^15 - 1		Short
+	- int, 	    4 bytes,	    -2^31		2^31 - 1		Integer
+	- long, 	8 bytes,	    -2^63		2^63 - 1		Long
+	- float	    4 bytes,	    -34E+38F	+34E+38F		Float
+	- double	8 bytes,	    -17E+308	+17E+308		Double
+	- boolean	VM dependent    false		true			Boolean
+	- char		2 bytes	        0		    65,535		    Character
 	
 - Reference (stores addresses/memory location of the actual object they refer to)
 	- Classes
@@ -78,9 +78,9 @@ Datatype:
 Number System:
 =============================
 
-- Binary 	- radix=2 	(0,1)
-- Decimal	- base=10 	(0,1,2,3,4,5,6,7,8,9)
-- Octal  	- base=8	(0,1,2,3,4,5,6,7)
+- Binary 	    - radix=2 	(0,1)
+- Decimal	    - base=10 	(0,1,2,3,4,5,6,7,8,9)
+- Octal  	    - base=8	(0,1,2,3,4,5,6,7)
 - Hexadecimal	- base=16	(0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F)
 
 
@@ -227,7 +227,7 @@ Object Class:
 ========================================================
 - Object class is found in java.lang package. java.lang package is imported by default in all classes.
 - JNI = Java Native Interface is a foreign function interface programming framework that enables java code running in JVM to call and be called by native application and libraries written in order languages such as C/C++. You can see native keyword with the methods that are written in C/C++.
-- The native keyword is applied to a method to indicate that the method is implemented in native code using JNI (Java Native Interface). native is a modifier applicable only for methods and we can’t apply it anywhere else. The methods which are implemented in C, C++ are called as native methods or foreign methods.
+- The native keyword is applied to a method to indicate that the method is implemented in native code using JNI (Java Native Interface). Native is a modifier applicable only for methods and we can’t apply it anywhere else. The methods which are implemented in C, C++ are called as native methods or foreign methods.
     eg: public final native Class<?> getClass();
         public final native void notify();
         public final native void notifyAll();
@@ -251,3 +251,155 @@ Methods in Object Class
 - public final native void notify() - these are used to monitor objects in multi threading
 - public final native void wait(long var1) - these are used to monitor objects in multi threading
 - protected void finalize() - used to destruct object from Heap memory by the JVM (before JDK 9). Since JDK 9+ we have automated this using garbage collector tool.
+
+
+
+
+
+Design Principles for OOPS:
+==========================================
+SOLID - Intriduced by Robert Martin (Uncle Bob) in paper desig principles and design patterns.
+
+- S = Single Responsibility Principle 
+        A class should have only one reason to change. 
+        If there are two functionality then there should two separate classes created.
+- O = Open/Closed principle 
+        Software entities (classes, modules, functions, etc. should be open for extensions and closed for modification. 
+        Open for extension - Avoid declaring final classes, final method, static field. 
+        Closed for modification means that class is defined wth enough level of abstraction to extend it and create new types on the basis of it.
+- L = Liskov substitution principle
+        Objects in a program should be replaceable with instances of their subtypes without altering the correctness of the program.
+        Should not violate polymorphism principle.
+        To make sure that we can replace one object with another, we need to check the derived classes, just extends base classes without replacement of parent class.
+- I = Interface segregation principle
+        Clients should not be forced to use/depend on methods which it does not use.
+        Instead of setting up a single interface which involves all business functionality it is preferred to construct smaller segregated interfaces.
+- D = Dependency inversion principle
+        High level modules should not depend on low level modules, infact both should depend on abstraction.
+        Abstraction should not depend on details, infact details should be dependent on abstration.
+
+
+
+Exception:
+==========================================
+- In Java, an exception is an event that disrupts the normal flow of the program. It is an object which is thrown at runtime. 
+
+- What is Exception Handling? Exception Handling is a mechanism to handle runtime errors such as ClassNotFoundException, IOException, SQLException, RemoteException, etc.
+
+- Two Categories of exception:
+    - Checked - determined during compilation time. (FileNotFoundException)
+    - Unchecked - determined only during runtime. (NullPointerException)
+    - For custom checked exception extend your child class from Exception class.
+    - For custom unchecked exception extend your child class from RuntimeException class.
+
+- If two exceptions come from same type hierarchy then we need to specify the most specific type first "FileNotFoundException" and then the generic type "IOException". FileNotFoundException is child of IOException. If it is not follow we get unreachable catch block compilation error.
+
+- finally block is called with ot without exception. Finally block is called no matter what happens. We can also use try-finally block as well.
+  try-catch, try-catch-finally, try-finally = all valid scenario
+
+- Previous finally block was used to close connections / release critical resources. But now try-with-resource block is used to do so.
+
+- finally block won't be executed if we use System.exit(0) and stop JVM, or throw new Exception in between, or if we use it in multi threading and the thread is terminated in between.
+
+- throws keyword is added in the method signature which let's a user know that the particular method can throw Exception and should be handled when using the method.
+
+
+
+
+Genrics:
+=======================================================
+- Generic methods are methods which introduce its own type parameter.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Git Basic Commands
+=============================
+git init                                - initialize a directory as git repository
+git status                              - check the current status of files and directory
+
+git add .                               - add all files to staging area (staging file would finally get added to snapshot/commit)
+git add <file_name>                     - add a specific file to staging area
+
+git commit -m <commit_msg>              - commit all files and directories from staging area
+git commit -a -m <commit_msg>           - add files to staging and commit them as well (short cut command)
+git commit --amend -m <new_commit_msg>  - change the last commit message (nothing should be in staging area)
+git commit --amend -no-edit             - add the lastest staging changes to last commit without changing previous commit message
+
+git rm --cached <file_path>             - remove a specific new file from getting added to staging area (this can be also achieved using ".gitignore" file)
+git rm -r --cached <directory_path>     - remove all new files recursively from specific directory from getting added to staging area
+
+git log                                 - check history of git commits
+
+git --restore --staged <file_path>      - will remove the 'modified' file from the staging area to unstage state without discarding the latest changes on file.
+git --restore <file_path>               - will discard the latest changes on file from staging area.
+
+git remote -v                           - check if local repository is connected to remote repository
+git remote add origin <HTTP/SSH URL>    - connect a remote repository to your local repository. (origin is a short hand name for remote repository/URL)
+git push origin -u <branch_name>        - to push changes upstream (-u) to origin/remote repo url's particular branch
+git remote set-url origin <URL>         - change remote URLs from HTTP to SSH and vice versa
+
+git branch <branch_name>                - create new local branch
+git branch                              - list of local branches
+git branch -r                           - list of remote branches
+git branch -a                           - list of all remote and local branches
+git checkout <branch_name>              - move to existing branch
+git switch <branch_name>                - move to existing branch (since Git2.0)
+git checkout -b <branch_name>           - create and change branch
+git switch -c <branch_name>             - create and change branch (since Git2.0)
+git checkout <commit_id_first4chars>    - detatches from HEAD (latest commit) and take back to the old commit. This is used just to investigate old code and debug. (SHOULD NOT COMMIT any changes because it can be lost)
+git branch -d <branch_name>             - delete branch from local
+git push origin --delete <branch_name>  - delete branch from remote
+
+git fetch                               - pulls changes from remote branch but does not merge those changes in local branch
+git merge                               - to be used after git fetch so as to merge the latest changes from remote to local branch
+git pull                                - pulls changes from remote branch and merges those changes in local branch (git fetch + git merge)
+
+git rebase <master_branch>              - does adds all the changes of your local branch on top of the local master branch
+git pull --rebase                       - does adds all the changes of your local branch on top of the remote master branch (git fetch + git rebase)
+
+git reset                               - reset state of your file system to a specific revision option
+git reset --hard                        - files from other region will be restored and all changes from other revisions will be removed
+git reset --hard HEAD~1                 - reset state of our filesystem to the state that was one commit ago
+
+
+ 
+
