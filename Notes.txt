@@ -312,6 +312,21 @@ Genrics:
 
 
 
+Stream API:
+=======================================================
+- Stream API is a set of interfaces that allows to process elements to perform operations with them in containers and arrays with the help of functional interfaces.
+- A sequence of elements supporting sequential and parallel aggregate operations. The following example illustrates an aggregate operation using Stream and IntStream:
+
+     int sum = widgets.stream()
+                      .filter(w -> w.getColor() == RED)
+                      .mapToInt(w -> w.getWeight())
+                      .sum();
+ 
+- filter(), mapToInt() are intermediate functions. They have listeners which modify data and pass to next listener.
+- sum(), collect(), forEach(), toArray(), count(), max(), min() is a terminal function which terminates the whole stream.
+
+
+
 
 
 
