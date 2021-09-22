@@ -329,6 +329,54 @@ Stream API:
 
 
 
+Collections:
+========================================================
+Marker Interface are used to do special operation or adds as a metadata to the compiler to perform stuffs.
+Example - RandomAccess which indicates that collection which implments this would retrieve data in constant time
+Also RandomAccess is being used in Collections class to use indexedBinarySearch algorithm instead of iteratorBinaryAlgorithm
+
+
+ArrayList 		- thread unsafe
+				public boolean add(E e) {
+					modCount++;
+					add(e, elementData, size);
+					return true;
+				    }
+
+In ArrayList we need to copy the existing array when trying to add/remove any element either in the beginning ot in the middle of the list.
+ArrayList needs consecutive memory location.
+Use ArrayList if you want to add elements to the end of the list and read by index
+
+Vector 		- thread safe, methods have synchronized keyword
+				public synchronized boolean add(E e) {
+					modCount++;
+					add(e, elementData, elementCount);
+					return true;
+				    }
+
+CopyOnWriteArrayList	- thread safe, methods have synchronized block, better performance and optimzation than Vector
+				public boolean add(E e) {
+					synchronized (lock) {
+					    Object[] es = getArray();
+					    int len = es.length;
+					    es = Arrays.copyOf(es, len + 1);
+					    es[len] = e;
+					    setArray(es);
+					    return true;
+					}
+				    }
+
+
+Stack 			- thread unsafe, almost all methods are similar to Queue but follows LIFO hence it is recommended to use Deque instead
+
+
+LinkedList
+
+Implements Deque -> Queue interface. Better to use it in the form a Queue.
+LinkedList is not required to move the previous of next element, we just need to change the link/pointer among the nodes to achieve the order.
+LinkedList doesn't require consecutive memory location. Nodes can be anywhere in the memory what matters is only the pointers/links t other nodes.
+LinkedList is faster in adding/removing nodes are anywhere in the list.
+Use LinkedList to add elements to the beginning of the list and remove from the beginning of the list.
 
 
 
@@ -345,15 +393,21 @@ Stream API:
 
 
 
+Big O Notation
+==========================================================================
+O(1)		constant		Get element from array at any index
+O(n)		linear			Find element in unsorted array
+O(log n)	logarithmic		Find element in binary tree
 
 
+ArrayList VS LinkedList
+------------------------------------------
+		ArrayList		LinkedList
+get		O(1)			O(n)
+add		O(1)*			O(1)
+remove		O(n)			O(1)
 
-
-
-
-
-
-
+* with the exception when ArrayList is extended or when adding elements at the beginning or middle of the list.
 
 
 
