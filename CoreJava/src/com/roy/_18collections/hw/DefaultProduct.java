@@ -43,4 +43,8 @@ public class DefaultProduct implements Product {
 		return this.price;
 	}
 
+	@Override
+	public void setPrice(double price) {
+		this.price = price;
+	}
 }
